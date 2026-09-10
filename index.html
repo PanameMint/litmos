@@ -197,8 +197,8 @@
   .stat-lines strong{color:var(--ink); font-weight:700;}
 
   /* Stats */
-  .stats-grid{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; grid-template-rows:repeat(3, minmax(45px,1fr)); gap:14px;}
-  .stat-card{border-radius:16px; padding:16px 14px; display:flex; flex-direction:column; justify-content:flex-end;}
+  .stats-grid{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; grid-template-rows:repeat(3, minmax(180px,1fr)); gap:16px;}
+  .stat-card{border-radius:24px; padding:24px; display:flex; flex-direction:column; justify-content:flex-end;}
   .stat-card.card-a{grid-column:1; grid-row:1 / 4;}
   .stat-card.card-photo-1{grid-column:2; grid-row:1 / 2;}
   .stat-card.card-b{grid-column:2; grid-row:2 / 4;}
@@ -208,11 +208,11 @@
   .stat-card.cream{background:var(--cream); color:var(--ink);}
   .stat-card.navy{background:var(--navy); color:#fff;}
   .stat-card.mint{background:var(--mint); color:var(--ink);}
-  .stat-card .label{font-family:'Montserrat',sans-serif; font-weight:600; font-size:.74rem; letter-spacing:.01em; text-transform:uppercase;}
-  .stat-card .num{font-family:'Montserrat',sans-serif; font-weight:700; font-style:italic; font-size:1.9rem; line-height:1; margin:10px 0 6px;
+  .stat-card .label{font-family:'Montserrat',sans-serif; font-weight:600; font-size:1rem; letter-spacing:.01em; text-transform:uppercase;}
+  .stat-card .num{font-family:'Montserrat',sans-serif; font-weight:500; font-style:italic; font-size:5.5rem; line-height:1; margin:16px 0 8px;
     background:linear-gradient(90deg,var(--purple),var(--purple-soft)); -webkit-background-clip:text; background-clip:text; color:transparent;}
   .stat-card.navy .num{background:linear-gradient(90deg,var(--gold),var(--pink)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .stat-card .desc{font-size:.8rem; color:#5a5273; margin-bottom:auto; padding-bottom:10px;}
+  .stat-card .desc{font-size:1.125rem; font-weight:400; color:#5a5273; margin-bottom:auto; padding-bottom:12px;}
   .stat-card.navy .desc{color:#cfc6ea;}
   .stat-card .source{font-size:.68rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:#8b84a3; border-top:1px solid rgba(0,0,0,.08); padding-top:8px;}
   .stat-card.navy .source{color:#9d93bd; border-top:1px solid rgba(255,255,255,.14);}
@@ -400,7 +400,7 @@
       <div class="chat-body" id="chatBody">
         <div class="chat-row"><div class="bubble them">Hi Litmos team, 👋 Ask me anything about the track record.</div></div>
         <div class="pills" id="pillRow">
-          <div class="pill-q" data-a="My largest single transaction earned $48K in commission, part of $81.6M+ in career volume across 101 deals since May 2023.">What's your biggest deal?</div>
+          <div class="pill-q" data-a="Sales volume grew from $17.9M in 2024 to $42.6M in 2025, up ~138%, with $21.0M already closed year-to-date in 2026.">What's your YoY growth?</div>
           <div class="pill-q" data-a="Three channels: identifying and expanding targets within a live database, building relationships with the industry players who influence a deal (brokers, conveyancers, other agents), and referrals from past clients. Direct outreach (calls, in-person touchpoints) is one tool inside that system. I grew the database from zero to 900+ over 3 years.">How did you build your pipeline?</div>
           <div class="pill-q" data-a="Mostly gummy bears and cheeseburgers. At volumes that shouldn't be physically possible.">What keeps you performing at the top of your game?</div>
           <div class="pill-q" data-a="93% of my listings sell, and my average time on market is 28 days against a 36-day industry average, a 22% faster sales cycle than the market.">What's your win rate?</div>
