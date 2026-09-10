@@ -115,6 +115,24 @@
   .mobile-nav.open{display:flex;}
   .mobile-nav a{color:#e6e1f7; padding:12px 6px; border-top:1px solid rgba(255,255,255,.08); font-size:.98rem; font-weight:500;}
 
+  /* Contact dropdown */
+  .contact-dropdown{position:relative; display:inline-block;}
+  .contact-menu{
+    position:absolute; top:calc(100% + 8px); right:0; background:#fff; border-radius:12px;
+    box-shadow:0 16px 40px -14px rgba(36,26,77,.45); padding:8px; display:none; flex-direction:column;
+    gap:2px; min-width:190px; z-index:80;
+  }
+  .contact-menu.open{display:flex;}
+  .contact-menu a{
+    padding:10px 12px; border-radius:8px; color:var(--ink); font-size:.9rem; font-weight:600;
+    display:flex; align-items:center; gap:8px; white-space:nowrap;
+  }
+  .contact-menu a:hover{background:#f3effb;}
+  .contact-menu a svg{flex-shrink:0;}
+  .mobile-nav .contact-menu{position:static; box-shadow:none; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); margin-top:4px;}
+  .mobile-nav .contact-menu a{color:#e6e1f7;}
+  .mobile-nav .contact-menu a:hover{background:rgba(255,255,255,.08);}
+
   /* Hero */
   .hero{background:var(--navy); color:#fff; padding:72px 0 96px; overflow:hidden;}
   .hero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
@@ -143,7 +161,7 @@
   .bubble.them{background:#f3effb; color:var(--ink);}
   .bubble.them a{color:var(--purple); font-weight:600; text-decoration:underline;}
   .bubble.me{background:var(--purple); color:#fff;}
-  .pills{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 14px;}
+  .pills{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 28px;}
   .pill-q{background:#f3effb; border:1px solid #e3daf7; padding:7px 12px; border-radius:999px; font-size:.76rem; cursor:pointer; transition:background .15s; color:var(--purple);}
   .pill-q:hover{background:#e6ddf9;}
   .chat-input{display:flex; align-items:center; gap:8px; border:1px solid #e6e1f2; border-radius:12px; padding:10px 12px; color:#9a92b3; font-size:.8rem;}
@@ -321,7 +339,7 @@
 <body>
 
 <div class="teaser">
-  <span>The AE search doesn't have to end in another generic hire. <strong>Combat the Turnover Cycle.</strong></span>
+  <span>The AE search doesn't have to be a gamble. <strong>Combat the Turnover Cycle.</strong></span>
   <a href="#track-record">See the Numbers</a>
 </div>
 
@@ -335,7 +353,13 @@
       <a href="#proof">Proof</a>
     </nav>
     <div class="header-actions">
-      <a class="cta-gold" href="mailto:iliass.wagner@gmail.com?subject=Account%20Executive%20Application" id="desktopCta">Contact Me →</a>
+      <div class="contact-dropdown">
+        <button class="cta-gold" id="desktopCta" onclick="toggleContactMenu('menu-header')">Contact Me →</button>
+        <div class="contact-menu" id="menu-header">
+          <a href="tel:0481797691"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call 0481 797 691</a>
+          <a href="mailto:iliass.wagner@gmail.com?subject=Account%20Executive%20Application"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email</a>
+        </div>
+      </div>
       <button class="hamburger" id="hamBtn" aria-label="Open menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
       </button>
@@ -346,7 +370,13 @@
     <a href="#beyond-numbers">The Ramp</a>
     <a href="#why-me">Why Me</a>
     <a href="#proof">Proof</a>
-    <a href="mailto:iliass.wagner@gmail.com">Contact Me</a>
+    <div class="contact-dropdown" style="display:block;">
+      <a href="#" onclick="event.preventDefault(); toggleContactMenu('menu-mobile')">Contact Me</a>
+      <div class="contact-menu" id="menu-mobile">
+        <a href="tel:0481797691">Call 0481 797 691</a>
+        <a href="mailto:iliass.wagner@gmail.com">Email</a>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -362,7 +392,7 @@
       <p class="lede story">Networking: More calls. Brokers. Conveyancers. <em>"Hey Jake, how about coffee on Tuesday?"</em>. Other agents. Referrals from past clients. <em>"Awesome, forgot school pick-up again."</em></p>
       <div class="hero-ctas">
         <a class="cta-gold" href="#track-record">View the Track Record →</a>
-        <a class="btn-ghost" href="https://www.linkedin.com/in/iliass-okaf-a12274212" target="_blank">LinkedIn Profile</a>
+        <a class="btn-ghost" href="iliass-okaf-cv.pdf" target="_blank">View the Full CV (PDF)</a>
       </div>
     </div>
     <div class="chatcard">
@@ -372,7 +402,7 @@
         <div class="pills" id="pillRow">
           <div class="pill-q" data-a="My largest single transaction earned $48K in commission, part of $81.6M+ in career volume across 101 deals since May 2023.">What's your biggest deal?</div>
           <div class="pill-q" data-a="Three channels: identifying and expanding targets within a live database, building relationships with the industry players who influence a deal (brokers, conveyancers, other agents), and referrals from past clients. Direct outreach (calls, in-person touchpoints) is one tool inside that system. I grew the database from zero to 900+ over 3 years.">How did you build your pipeline?</div>
-          <div class="pill-q" data-a="Sales volume grew from $17.9M in 2024 to $42.6M in 2025, up ~138%, with $21.0M already closed year-to-date in 2026.">What's your YoY growth?</div>
+          <div class="pill-q" data-a="Mostly gummy bears and cheeseburgers. At volumes that shouldn't be physically possible.">What keeps you performing at the top of your game?</div>
           <div class="pill-q" data-a="93% of my listings sell, and my average time on market is 28 days against a 36-day industry average, a 22% faster sales cycle than the market.">What's your win rate?</div>
           <div class="pill-q" data-a="The mechanics carry over directly: outbound cadence, full deal-cycle ownership, and closing at executive level under pressure. I'm also a licensed auctioneer: closing live, in the room, is my baseline.">Why real estate to SaaS?</div>
           <div class="pill-q" data-a="See for yourself: <a href=&quot;#proof&quot;>testimonials below</a>.">What do your clients think of you?</div>
@@ -640,50 +670,58 @@
       </button>
       <div class="carousel" id="testimonialCarousel">
       <div class="media-card">
-        <div class="media"><span class="plus">+</span><h3>Testimonial 1</h3></div>
+        <div class="media"><span class="plus">+</span><h3>Handles it remotely</h3></div>
         <div class="body">
-          <p>[Placeholder — quote to come]</p>
-          <div class="stat-line">Name / role, suburb</div>
+          <p>"He was calm and has good judgement. He handled all aspects of the sale process despite me living overseas."</p>
+          <div class="stat-line">Seller, townhouse — Richmond, VIC</div>
         </div>
       </div>
       <div class="media-card">
-        <div class="media"><span class="plus">+</span><h3>Testimonial 2</h3></div>
+        <div class="media"><span class="plus">+</span><h3>Revives a stalled deal</h3></div>
         <div class="body">
-          <p>[Placeholder — quote to come]</p>
-          <div class="stat-line">Name / role, suburb</div>
+          <p>"The property was on the market for 10 months with another agent and Illias sold it in 4 weeks."</p>
+          <div class="stat-line">Seller, apartment — Southbank, VIC</div>
         </div>
       </div>
       <div class="media-card">
-        <div class="media"><span class="plus">+</span><h3>Testimonial 3</h3></div>
+        <div class="media"><span class="plus">+</span><h3>Sells across state lines</h3></div>
         <div class="body">
-          <p>[Placeholder — quote to come]</p>
-          <div class="stat-line">Name / role, suburb</div>
+          <p>"Being an interstate seller, Ilias made the entire sales process seamless and ran a very strong campaign. I achieved an excellent sale price."</p>
+          <div class="stat-line">Seller, house — South Melbourne, VIC</div>
         </div>
       </div>
       <div class="media-card">
-        <div class="media"><span class="plus">+</span><h3>Testimonial 4</h3></div>
+        <div class="media"><span class="plus">+</span><h3>Handles complexity</h3></div>
         <div class="body">
-          <p>[Placeholder — quote to come]</p>
-          <div class="stat-line">Name / role, suburb</div>
+          <p>"A more complex process than a standard sale given the ownership structure. Iliass and Sam handled everything with confidence... helping me achieve a strong result within a short timeframe."</p>
+          <div class="stat-line">Seller, apartment — St Kilda West, VIC</div>
         </div>
       </div>
       <div class="media-card">
-        <div class="media"><span class="plus">+</span><h3>Testimonial 5</h3></div>
+        <div class="media"><span class="plus">+</span><h3>Trusted negotiator</h3></div>
         <div class="body">
-          <p>[Placeholder — quote to come]</p>
-          <div class="stat-line">Name / role, suburb</div>
+          <p>"A trustworthy guide who knows his market well, and diligent when the time came for negotiation."</p>
+          <div class="stat-line">Seller, apartment — Southbank, VIC</div>
         </div>
       </div>
       <div class="media-card">
-        <div class="media"><span class="plus">+</span><h3>Testimonial 6</h3></div>
+        <div class="media"><span class="plus">+</span><h3>Adapts strategy mid-campaign</h3></div>
         <div class="body">
-          <p>[Placeholder — quote to come]</p>
-          <div class="stat-line">Name / role, suburb</div>
+          <p>"When it came time to pivot and come up with a new strategy to maximise the result I let them take the reigns and the great result followed."</p>
+          <div class="stat-line">Seller, apartment — Elwood, VIC</div>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media"><span class="plus">+</span><h3>Earns repeat business</h3></div>
+        <div class="body">
+          <p>"Iliass sold us an apartment in mid-2024. We were so impressed, that we asked him to handle the sale of our house... Iliass also achieved a better than expected sale price!"</p>
+          <div class="stat-line">Seller, house — South Melbourne, VIC</div>
         </div>
       </div>
       </div>
     </div>
-    <div class="dots" id="testimonialDots"><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="dots" id="testimonialDots"><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <p style="text-align:center; margin-top:18px; font-size:.85rem; color:#8b84a3;"><a href="https://www.realestate.com.au/agent/iliass-okaf-3410792" target="_blank" style="color:var(--purple); font-weight:600;">All 23 verified reviews on realestate.com.au →</a></p>
   </div>
 </section>
 
@@ -692,7 +730,13 @@
     <h2>Ready to see Iliass in action?</h2>
     <p>See prospecting, negotiation, and closing in action, across whatever territory is assigned.</p>
     <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <a class="cta-solid" href="mailto:iliass.wagner@gmail.com?subject=Account%20Executive%20Application%20-%20Litmos">Book a Conversation →</a>
+      <div class="contact-dropdown">
+        <button class="cta-solid" onclick="toggleContactMenu('menu-finalcta')">Book a Conversation →</button>
+        <div class="contact-menu" id="menu-finalcta">
+          <a href="tel:0481797691"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call 0481 797 691</a>
+          <a href="mailto:iliass.wagner@gmail.com?subject=Account%20Executive%20Application%20-%20Litmos"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email</a>
+        </div>
+      </div>
       <a class="btn-ghost" href="iliass-okaf-cv.pdf" target="_blank">View the Full CV (PDF) →</a>
     </div>
   </div>
@@ -723,7 +767,15 @@
         <a href="tel:0481797691">0481 797 691</a>
       </div>
     </div>
-    <div class="footer-cta"><a class="cta-gold" href="mailto:iliass.wagner@gmail.com?subject=Account%20Executive%20Application">Contact Me →</a></div>
+    <div class="footer-cta">
+      <div class="contact-dropdown">
+        <button class="cta-gold" onclick="toggleContactMenu('menu-footer')">Contact Me →</button>
+        <div class="contact-menu" id="menu-footer" style="right:auto; left:50%; transform:translateX(-50%);">
+          <a href="tel:0481797691"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call 0481 797 691</a>
+          <a href="mailto:iliass.wagner@gmail.com?subject=Account%20Executive%20Application"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email</a>
+        </div>
+      </div>
+    </div>
     <div class="footer-bottom">
       <span>Built by Iliass Okaf for the Litmos Account Executive role, Australia.</span>
       <span>Not affiliated with or endorsed by Litmos.</span>
@@ -778,6 +830,18 @@
   });
 
   const userControlledCards = new Set();
+
+  function toggleContactMenu(id){
+    document.querySelectorAll('.contact-menu').forEach(m=>{
+      if(m.id !== id) m.classList.remove('open');
+    });
+    document.getElementById(id).classList.toggle('open');
+  }
+  document.addEventListener('click', (e)=>{
+    if(!e.target.closest('.contact-dropdown')){
+      document.querySelectorAll('.contact-menu').forEach(m=>m.classList.remove('open'));
+    }
+  });
 
   function flipCard(id){
     userControlledCards.add(id);
