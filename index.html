@@ -343,6 +343,25 @@
     .stats-grid{flex-direction:column;}
     .stats-grid > .stat-card, .stats-grid > .stats-col{flex-basis:auto;}
   }
+  .cv-modal{
+    display:none; position:fixed; inset:0; z-index:200; background:rgba(24,15,56,.75);
+    align-items:center; justify-content:center; padding:16px;
+  }
+  .cv-modal.open{display:flex;}
+  .cv-modal-inner{
+    background:#fff; width:100%; max-width:820px; height:90vh; border-radius:16px; overflow:hidden;
+    display:flex; flex-direction:column; box-shadow:0 30px 80px -20px rgba(0,0,0,.6);
+  }
+  .cv-modal-bar{
+    background:var(--navy); color:#fff; padding:14px 18px; display:flex; align-items:center; justify-content:space-between;
+    font-family:'Montserrat',sans-serif; font-weight:600; font-size:.95rem; flex-shrink:0;
+  }
+  .cv-modal-close{
+    background:rgba(255,255,255,.15); border:none; color:#fff; width:30px; height:30px; border-radius:50%;
+    cursor:pointer; font-size:.9rem; display:flex; align-items:center; justify-content:center;
+  }
+  .cv-modal-close:hover{background:rgba(255,255,255,.28);}
+  .cv-modal-inner iframe{flex:1; border:none; width:100%;}
 </style>
 </head>
 <body>
@@ -404,7 +423,8 @@
     </div>
     <div class="hero-ctas">
       <a class="cta-gold" href="#track-record">View the Track Record →</a>
-      <a class="btn-ghost" href="iliass-okaf-cv.pdf" target="_blank">View the Full CV (PDF)</a>
+      <a class="btn-ghost" href="iliass-okaf-cv.pdf" onclick="event.preventDefault(); openCvModal();">View the Full CV (PDF)</a>
+      <a href="iliass-okaf-cv.pdf" download style="color:#c9bcf5; font-size:.85rem; font-weight:500; align-self:center;">Download CV</a>
     </div>
     <div class="chatcard">
       <div class="chat-head"><img src="profile-photo.jpg" alt="" style="width:22px; height:22px; border-radius:50%; object-fit:cover; flex-shrink:0;"><span class="live"></span>Iliass — Pipeline Assistant</div>
@@ -753,7 +773,8 @@
           <a href="mailto:iliass.wagner@gmail.com?subject=Account%20Executive%20Application%20-%20Litmos"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>Email</a>
         </div>
       </div>
-      <a class="btn-ghost" href="iliass-okaf-cv.pdf" target="_blank">View the Full CV (PDF) →</a>
+      <a class="btn-ghost" href="iliass-okaf-cv.pdf" onclick="event.preventDefault(); openCvModal();">View the Full CV (PDF) →</a>
+      <a href="iliass-okaf-cv.pdf" download style="color:#fff; font-size:.85rem; font-weight:500; align-self:center; text-decoration:underline;">Download CV</a>
     </div>
   </div>
 </section>
@@ -846,6 +867,23 @@
   });
 
   const userControlledCards = new Set();
+
+  function openCvModal(){
+    document.getElementById('cvModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCvModal(){
+    document.getElementById('cvModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('cvModal').addEventListener('click', (e)=>{
+      if(e.target.id === 'cvModal') closeCvModal();
+    });
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') closeCvModal();
+  });
 
   function toggleContactMenu(id){
     document.querySelectorAll('.contact-menu').forEach(m=>{
@@ -982,6 +1020,19 @@
   initCarousel('usecaseCarousel', 'usecaseDots');
   initCarousel('testimonialCarousel', 'testimonialDots');
 </script>
+
+<div class="cv-modal" id="cvModal">
+  <div class="cv-modal-inner">
+    <div class="cv-modal-bar">
+      <span>Iliass Okaf — CV</span>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a href="iliass-okaf-cv.pdf" download style="color:#fff; font-size:.85rem; font-weight:600;">Download</a>
+        <button class="cv-modal-close" onclick="closeCvModal()" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <iframe src="iliass-okaf-cv.pdf" title="Iliass Okaf CV"></iframe>
+  </div>
+</div>
 
 </body>
 </html>
