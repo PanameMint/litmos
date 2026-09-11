@@ -135,7 +135,14 @@
 
   /* Hero */
   .hero{background:var(--navy); color:#fff; padding:72px 0 96px; overflow:hidden;}
-  .hero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+  .hero .wrap{
+    display:grid; grid-template-columns:1.05fr .95fr; column-gap:56px; row-gap:22px;
+    grid-template-areas: "heading heading" "story chat" "ctas ctas";
+  }
+  .hero-heading{grid-area:heading;}
+  .story-wrap{grid-area:story;}
+  .hero-ctas{grid-area:ctas; align-self:start;}
+  .chatcard{grid-area:chat; align-self:stretch;}
   .eyebrow{color:#c9bcf5; font-size:.85rem; letter-spacing:.02em; margin-bottom:14px; font-weight:600;}
   .hero h1{font-size:2.9rem; line-height:1.12; font-weight:600; margin-bottom:22px;}
   .hero p.lede{font-size:1.1rem; color:#d9d3ee; max-width:520px; margin-bottom:30px;}
@@ -151,11 +158,11 @@
   }
   .btn-ghost:hover{background:rgba(255,255,255,.08);}
 
-  .chatcard{background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(0,0,0,.5); color:var(--ink);}
+  .chatcard{background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(0,0,0,.5); color:var(--ink); display:flex; flex-direction:column; height:100%;}
   .chat-head{background:linear-gradient(90deg,var(--purple),var(--purple-soft)); color:#fff; padding:13px 18px; font-size:.88rem; font-weight:600; display:flex; align-items:center; gap:8px;}
   .chat-head .live{width:7px;height:7px;border-radius:50%;background:#5CE49B;flex-shrink:0;}
-  .chat-body{padding:18px; font-size:.87rem;}
-  .chat-row{display:flex; margin-bottom:12px;}
+  .chat-body{padding:18px; font-size:.87rem; display:flex; flex-direction:column; flex:1; min-height:0;}
+  .chat-row{display:flex; margin-bottom:18px;}
   .chat-row.me{justify-content:flex-end;}
   .bubble{padding:9px 14px; border-radius:14px; max-width:82%;}
   .bubble.them{background:#f3effb; color:var(--ink);}
@@ -164,7 +171,7 @@
   .pills{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 28px;}
   .pill-q{background:#f3effb; border:1px solid #e3daf7; padding:7px 12px; border-radius:999px; font-size:.76rem; cursor:pointer; transition:background .15s; color:var(--purple);}
   .pill-q:hover{background:#e6ddf9;}
-  .chat-input{display:flex; align-items:center; gap:8px; border:1px solid #e6e1f2; border-radius:12px; padding:10px 12px; color:#9a92b3; font-size:.8rem;}
+  .chat-input{display:flex; align-items:center; gap:8px; border:1px solid #e6e1f2; border-radius:12px; padding:10px 12px; color:#9a92b3; font-size:.8rem; margin-top:auto;}
   .chat-input span.arrow{margin-left:auto; width:24px; height:24px; border-radius:50%; background:var(--purple); color:#fff; display:flex; align-items:center; justify-content:center; font-size:.75rem; flex-shrink:0;}
 
   section{padding:80px 0;}
@@ -318,7 +325,11 @@
   @media (max-width:900px){
     nav.desktop-nav{display:none;}
     .hamburger{display:flex;}
-    .hero .wrap{grid-template-columns:1fr;}
+    .hero .wrap{
+      grid-template-columns:1fr;
+      grid-template-areas: "heading" "story" "chat" "ctas";
+    }
+    .chatcard{height:auto;}
     .hero h1{font-size:2.1rem;}
     .stats-grid{flex-wrap:wrap;}
     .stats-grid > .stat-card, .stats-grid > .stats-col{flex-basis:calc(50% - 16px);}
@@ -380,18 +391,20 @@
 
 <section class="hero">
   <div class="wrap">
-    <div>
+    <div class="hero-heading">
       <div class="eyebrow">Application for Account Executive · Australia</div>
       <h1>The Account Executive<br><span class="accent">Built to Close at the<br>Speed of Trust</span></h1>
+    </div>
+    <div class="story-wrap">
       <p class="lede story">Ready for the next challenge, with Litmos. But first, a short preview of the last three years:</p>
       <p class="lede story">Real estate in Melbourne, commission-only. Every deal is really two sales.</p>
       <p class="lede story">First I win the listing: Prospect. Find vendors. Build trust. Stay in touch. Sometimes for years. <em>"Hey Mia, Zoe's first week at kindergarten. How are you holding up?"</em> Pitch. List. <em>"No I won't do it for less than 1.8%."</em></p>
       <p class="lede story">Then the sale itself starts: Opens. Calls. <em>"The kitchen's a bit small."</em> Match the right buyer. <em>"Would they take $100K below?"</em> Laugh awkwardly. Negotiate. Hard. <em>"Congrats Emma, champagne."</em> 30-35 of these, every year.</p>
       <p class="lede story">Networking: More calls. Brokers. Conveyancers. <em>"Hey Jake, how about coffee on Tuesday?"</em>. Other agents. Referrals from past clients. <em>"Awesome, forgot school pick-up again."</em></p>
-      <div class="hero-ctas">
-        <a class="cta-gold" href="#track-record">View the Track Record →</a>
-        <a class="btn-ghost" href="iliass-okaf-cv.pdf" target="_blank">View the Full CV (PDF)</a>
-      </div>
+    </div>
+    <div class="hero-ctas">
+      <a class="cta-gold" href="#track-record">View the Track Record →</a>
+      <a class="btn-ghost" href="iliass-okaf-cv.pdf" target="_blank">View the Full CV (PDF)</a>
     </div>
     <div class="chatcard">
       <div class="chat-head"><img src="profile-photo.jpg" alt="" style="width:22px; height:22px; border-radius:50%; object-fit:cover; flex-shrink:0;"><span class="live"></span>Iliass — Pipeline Assistant</div>
@@ -732,7 +745,7 @@
 <section class="final-cta">
   <div class="wrap">
     <h2>Ready to see Iliass in action?</h2>
-    <p>See prospecting, negotiation, and closing in action, across whatever territory is assigned.</p>
+    <p>Would love to jump on a call and talk it through.</p>
     <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
       <div class="contact-dropdown">
         <button class="cta-solid" onclick="toggleContactMenu('menu-finalcta')">Book a Conversation →</button>
