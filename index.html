@@ -362,9 +362,17 @@
   }
   .cv-modal-close:hover{background:rgba(255,255,255,.28);}
   .cv-modal-inner iframe{flex:1; border:none; width:100%;}
+  .cv-mobile-fallback{display:none;}
+  .btn-ghost-dark{border:1.5px solid var(--navy); color:var(--navy); padding:12px 22px; border-radius:999px; font-family:'Montserrat',sans-serif; font-weight:500; font-size:.95rem; display:inline-block;}
   @media (max-width:700px){
     .cv-modal{padding:0;}
     .cv-modal-inner{max-width:none; width:100vw; height:100vh; height:100dvh; border-radius:0;}
+    .cv-iframe{display:none;}
+    .cv-mobile-fallback{
+      display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+      flex:1; padding:32px; gap:6px;
+    }
+    .cv-mobile-fallback p{color:#4a4266; font-size:.95rem; margin-bottom:18px;}
   }
 </style>
 </head>
@@ -1034,7 +1042,12 @@
         <button class="cv-modal-close" onclick="closeCvModal()" aria-label="Close">✕</button>
       </div>
     </div>
-    <iframe src="iliass-okaf-cv.pdf#toolbar=0&navpanes=0&view=FitH" title="Iliass Okaf CV"></iframe>
+    <iframe src="iliass-okaf-cv.pdf#toolbar=0&navpanes=0&view=FitH" title="Iliass Okaf CV" class="cv-iframe"></iframe>
+    <div class="cv-mobile-fallback">
+      <p>Preview works best on a larger screen.</p>
+      <a href="iliass-okaf-cv.pdf" target="_blank" class="cta-gold" style="display:inline-block; margin-bottom:12px;">Open CV in Browser →</a>
+      <a href="iliass-okaf-cv.pdf" download class="btn-ghost-dark">Download CV</a>
+    </div>
   </div>
 </div>
 
